@@ -1,23 +1,23 @@
-#include <Arduino.h>
 #include <ESP8266WiFi.h>
 
+// CHANGE AS NEEDED
 const char* ssid     = "TP-Link_5639";         // The SSID (name) of the Wi-Fi network you want to connect to
 const char* password = "w6cPXKxB"; 
-// put function declarations here:
-int myFunction(int, int);
-
+//
 void get_network_info(){
   if(WiFi.status() == WL_CONNECTED){
-    Serial.print("[+] Informations sur le réseau pour ");
-    Serial.println(ssid);
-
+    Serial.println((String)"[+] Informations sur le réseau pour " + ssid);
     Serial.println("[+] BSSID : " + WiFi.BSSIDstr());
-    Serial.print("[+] Gateway IP :  ");
-    Serial.println(WiFi.gatewayIP());
+    Serial.println("[+] Gateway IP :  " + WiFi.gatewayIP().toString());
+    Serial.println("[+] Subnet Mask : " + WiFi.subnetMask().toString());
+    Serial.println((String)"[+] RSSI : " + WiFi.RSSI() + " dB");
+    Serial.println("[+] ESP32 IP : " + WiFi.localIP().toString());
+    Serial.println("================================");
   }
   else{
     Serial.println("Not connected");
   }
+  delay(2000);
 }
 void setup() {
   Serial.begin(115200);
@@ -48,9 +48,4 @@ void setup() {
 
 void loop() {
  get_network_info();
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }
