@@ -1,4 +1,4 @@
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 
 const char *ssid = "AP_CYBERIOT";
 const char *password = "password";

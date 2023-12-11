@@ -1,4 +1,4 @@
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 
 // CHANGE AS NEEDED
 const char* ssid     = "TP-Link_5639";         // The SSID (name) of the Wi-Fi network you want to connect to
