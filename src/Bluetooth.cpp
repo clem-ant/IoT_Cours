@@ -3,18 +3,19 @@
 #include <BLEScan.h>
 #include <BLEAdvertisedDevice.h>
 #include <BLEServer.h>
+#include <Arduino.h>
 
 
-int scanTime = 20;  // En secondes
+int scanTime = 20;  // En secondesa
 BLEScan* pBLEScan;
 
 // Class recevant les résultats du scan et les traites
 class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
   void onResult(BLEAdvertisedDevice advertisedDevice) {
-    Serial.printf("Dispositif reconnu : %s \n", advertisedDevice.toString().c_str());
-    Serial.printf("Nom du dispositif : %s \n", advertisedDevice.getName().c_str());
-    Serial.printf("Adresse Mac du dispositif : %s \n", advertisedDevice.getAddress().toString());
-    Serial.printf("Données fabricant : %s \n", advertisedDevice.getManufacturerData().c_str());
+    Serial.printf("Dispositif reconnu : %s \n", advertisedDevice.toString().c_str() );
+    // Serial.printf("Nom du dispositif : %s \n", advertisedDevice.getName().c_str());
+    Serial.printf("Adresse Mac du dispositif : %s \n", advertisedDevice.getAddress().toString().c_str());
+    // Serial.printf("Donnees fabricant : %s \n", advertisedDevice.getManufacturerData().c_str());
     Serial.printf("Signal Rssi : %d \n", advertisedDevice.getRSSI());
   }
 };
@@ -43,5 +44,5 @@ void loop() {
   Serial.println("Scan done!");
   //supprimer les résultats du tamponBLEScan pour libérer de la mémoire
   pBLEScan->clearResults();
-  delay(2000);
+  delay(20000);
 }
